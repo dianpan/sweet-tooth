@@ -1,5 +1,5 @@
 class WelcomeController < ApplicationController
   def index
-    @search =
+    @search= Search.new
   end
 end
