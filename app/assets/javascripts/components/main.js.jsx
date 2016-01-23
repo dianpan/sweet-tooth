@@ -6,4 +6,4 @@ var Main = React.createClass({
     </div>
     )
   }
-})
+});
