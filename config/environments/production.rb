@@ -1,5 +1,5 @@
 Rails.application.configure do
-  MyApp::Application.configure do
+  SweetTooth::Application.configure do
     config.react.variant = :production
   end
   # Settings specified here will take precedence over those in config/application.rb.

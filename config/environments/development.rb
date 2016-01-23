@@ -1,5 +1,5 @@
 Rails.application.configure do
-  MyApp::Application.configure do
+  SweetTooth::Application.configure do
     config.react.variant = :development
   end
 
