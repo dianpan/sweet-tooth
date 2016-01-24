@@ -137,6 +137,8 @@ GEM
     sdoc (0.4.1)
       json (~> 1.7, >= 1.7.7)
       rdoc (~> 4.0)
+    simple_oauth (0.3.1)
+    slop (3.6.0)
     spring (1.6.2)
     sprockets (3.5.2)
       concurrent-ruby (~> 1.0)
