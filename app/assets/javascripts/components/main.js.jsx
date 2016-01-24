@@ -4,11 +4,13 @@ var Main = React.createClass({
       data:null,
       longitude:'',
       latitude:'',
-      location:''
+      location:'',
+      showCone:true
     }
   },
   componentDidMount(){
     console.log('initial state:', this.state)
+
     this.getLocation();
   },
   sendStateData: function(){
@@ -24,7 +26,7 @@ var Main = React.createClass({
       type: 'POST',
       data: formData,
       success: function(result) {
-        this.setState({data:result.data})
+        this.setState({data:result.data});
       }.bind(this),
       error: function(xhr, status, err) {
         console.error( status, err.toString());
@@ -32,13 +34,24 @@ var Main = React.createClass({
     });
   },
   render: function(){
-
-    return (
-      <div>
-        <button name="button" onClick={this.setLocation}>Button</button>
-        <button name="button" onClick={this.showMap}>Button2</button>
-      </div>
-    )
+    if (this.state.showCone) {
+      return (
+        <div>
+        <image className="ice-cream" onClick={this.handleIceCreamClick} src={this.props.img_src} />
+        </div>
+      )
+    } else {
+      return (
+        <div></div>
+      )
+    }
+  },
+  handleIceCreamClick: function(){
+    this.setLocation();
+    var map = $('#map');
+    map.removeClass('hide-map');
+    map.addClass('show-map');
+    this.setState({showCone:false})
   },
   getLocation: function(){
     var lng = $("#user_long");
@@ -66,8 +79,9 @@ var Main = React.createClass({
       if (this.state.longitude && this.state.latitude) {
         this.sendStateData();
       }
+    } else {
+      this.showMap();
     }
-    console.log(typeof this.state.data[1]['longitude'])
   },
   showMap: function(){
 
