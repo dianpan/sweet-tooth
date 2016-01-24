@@ -93,7 +93,7 @@ var Main = React.createClass({
         zoom: 16,
         center: mapCenter,
         scrollwheel: false,
-        draggable:false
+        draggable: true
       }
       map = new google.maps.Map(document.getElementById("map"), mapOptions);
 
@@ -112,6 +112,7 @@ var Main = React.createClass({
         '<div id="siteNotice">'+
         '</div>'+
         '<h4 id="firstHeading" class="firstHeading">' + dataArray[i]['name'] + '</h4>'+
+        '<img class="image-store" src="' + dataArray[i]['image'] + '"/>'+
         '<div id="bodyContent">'+
         '<p><b>Rating:</b> ' + dataArray[i]['rating'] + '</p>'+
         '<p><b>Phone:</b> ' + dataArray[i]['phone'] + '</p>'+
@@ -126,6 +127,7 @@ var Main = React.createClass({
           icon: "http://31.media.tumblr.com/tumblr_ls9k18YAcI1qg66hv.gif",
           optimized: false
         }, contentString);
+        iceCreamMarkers[i].setAnimation(google.maps.Animation.BOUNCE)
         iceCreamMarkers[i].addListener('click', toggleBounce);
         // iceCreamMarkers[i].addListener('mouseover', openInfoWindow);
         // iceCreamMarkers[i].addListener('mouseout', closeInfoWindow);
@@ -164,12 +166,6 @@ var Main = React.createClass({
         this.setAnimation(google.maps.Animation.BOUNCE);
       }
     }
-
-
-
-
-
-
 
     initMap(this.state.longitude,this.state.latitude, this.state.data)
     console.log(this.state.data.length);
