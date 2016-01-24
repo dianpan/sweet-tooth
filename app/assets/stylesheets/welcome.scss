@@ -2,6 +2,20 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+#title-text{
+  font-family: 'Pacifico', cursive;
+  font-size: 50px;
+}
+
+#pink {
+  color: #ff96ce;
+}
+
+.home-logo{
+  height: 70px;
+  width: 70px;
+}
+
 @-webkit-keyframes pulse {
  0% {
  -webkit-transform: scale(1, 1);
@@ -26,18 +40,20 @@ transform: scale(1, 1);
 };
 }
 
-.test {
+.ice-cream {
+  height: 450px;
+  width: 200px;
   -webkit-animation: pulse 1s linear infinite;
   animation: pulse 1s linear infinite;
 }
 
-.test:hover {
+.ice-cream:hover {
   -webkit-animation: none;
   animation:none;
 }
 
 
-.test:active {
+.ice-cream:active {
   -webkit-animation: none;
   animation:none;
   text-decoration:none;
