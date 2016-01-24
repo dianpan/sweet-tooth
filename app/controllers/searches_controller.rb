@@ -19,6 +19,7 @@ class SearchesController < ApplicationController
            biz_info['latitude']=business.location.coordinate.latitude
            biz_info['rating']=business.rating
            biz_info['text']=business.snippet_text
+           biz_info['image']=business.image_url
            shops << biz_info
      end
 
