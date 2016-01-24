@@ -111,11 +111,12 @@ var Main = React.createClass({
         var contentString = '<div id="content">'+
         '<div id="siteNotice">'+
         '</div>'+
-        '<h1 id="firstHeading" class="firstHeading">' + dataArray[i]['name'] + '</h1>'+
+        '<h4 id="firstHeading" class="firstHeading">' + dataArray[i]['name'] + '</h4>'+
         '<div id="bodyContent">'+
-        '<img src=' + dataArray[i]['rating'] + '/>'+
-        '<p><b> ' + dataArray[i]['phone'] + '</b></p>'+
-        '<p> ' + dataArray[i]['address'] + '</p>'+
+        '<p><b>Rating:</b> ' + dataArray[i]['rating'] + '</p>'+
+        '<p><b>Phone:</b> ' + dataArray[i]['phone'] + '</p>'+
+        '<p><b>Address:</b> ' + dataArray[i]['address'] + '<br>San Francisco, CA</p>'+
+        '<p style="font-size=10px"><i>' + dataArray[i]['text'] + '</i></p>'+
         '</div>'+
         '</div>';
         iceCreamMarkers[i] = createMarker({
