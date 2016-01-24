@@ -17,9 +17,9 @@ class SearchesController < ApplicationController
            biz_info['address']=business.location.address.first
            biz_info['longitude']=business.location.coordinate.longitude
            biz_info['latitude']=business.location.coordinate.latitude
-           biz_info['rating']=business.rating_image_url
+           # biz_info['rating']=business.rating_image_url
            shops << biz_info
-           p biz_info['rating']
+           # p biz_info['rating']
      end
 
      respond_to do |format|
