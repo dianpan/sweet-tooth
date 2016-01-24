@@ -113,9 +113,10 @@ var Main = React.createClass({
         '</div>'+
         '<h4 id="firstHeading" class="firstHeading">' + dataArray[i]['name'] + '</h4>'+
         '<div id="bodyContent">'+
-        // '<img src=' + dataArray[i]['rating'] + '/>'+
-        '<p>Phone: ' + dataArray[i]['phone'] + '</b></p>'+
-        '<p>Address: ' + dataArray[i]['address'] + '<br>San Francisco, CA</p>'+
+        '<p><b>Rating:</b> ' + dataArray[i]['rating'] + '</p>'+
+        '<p><b>Phone:</b> ' + dataArray[i]['phone'] + '</p>'+
+        '<p><b>Address:</b> ' + dataArray[i]['address'] + '<br>San Francisco, CA</p>'+
+        '<p style="font-size=10px"><i>' + dataArray[i]['text'] + '</i></p>'+
         '</div>'+
         '</div>';
         iceCreamMarkers[i] = createMarker({

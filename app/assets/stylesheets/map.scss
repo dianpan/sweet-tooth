@@ -1,8 +1,16 @@
 .show-map {
-  height: 400px;
-  width:400px;
+  position:relative;
+  height: 600px;
+  width: 800px;
 }
 
 .hide-map {
-  display: none;
+  width: 0px;
+  height: 0px;
+}
+
+.flex{
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
