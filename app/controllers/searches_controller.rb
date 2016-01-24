@@ -4,17 +4,24 @@ class SearchesController < ApplicationController
   end
 
   def create
-    session[:long]=params[:search][:long]
-    session[:lat]=params[:search][:lat]
-    p session[:lat]
-    p "***********"
-    p session[:long]
-    p "***********"
-    # cll = {latitude: params[:search][:lat], longitude: params[:search][:long]}
-    # p cll
-    # @response = Yelp.client.search(cll, {term: 'ice cream'}, {limit: 1})
-    # p @response
-    redirect_to root_path
+    long = params[:location][:longitude]
+    lat = params[:location][:latitude]
+     coordinates = { latitude: lat.to_f, longitude: long.to_f }
+     params = { term: 'ice cream',
+                radius_filter: 800
+              }
+     shops = []
+     Yelp.client.search_by_coordinates(coordinates,params).businesses.each do |business|
+           biz_info = {}
+           biz_info['name']=business.name
+           biz_info['phone']=business.phone
+           shops << biz_info
+     end
+
+     respond_to do |format|
+       data = { :data => shops}
+       format.json  { render :json => data }
+     end
   end
 
   def show

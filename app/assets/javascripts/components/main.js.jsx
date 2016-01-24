@@ -3,36 +3,37 @@ var Main = React.createClass({
     return {
       data:null,
       longitude:'',
-      latitude:''
+      latitude:'',
+      mapHidden:true
     }
   },
   sendData: function(){
-       var formData = {
-         location: {
-           longitude:this.state.longitude,
-           latitude:this.state.latitude
-         }
-       }
-
-       console.log(formData)
-      //    $.ajax({
-      //    url: "/searches",
-      //    dataType: 'json',
-      //    type: 'POST',
-      //    data: formData,
-      //    success: function(data) {
-      //      console.log(data)
-      //    }.bind(this),
-      //    error: function(xhr, status, err) {
-      //      console.error( status, err.toString());
-      //    }.bind(this)
-      //  });
-  //  },
+      var formData = {
+        location: {
+          longitude:this.state.longitude,
+          latitude:this.state.latitude
+        }
+      }
+      $.ajax({
+        url: "/searches",
+        dataType: 'json',
+        type: 'POST',
+        data: formData,
+        success: function(result) {
+          console.log(result.data)
+         //  this.setState({data:})
+        }.bind(this),
+        error: function(xhr, status, err) {
+          console.error( status, err.toString());
+        }.bind(this)
+      });
   },
   render: function(){
+
     return (
     <div>
       <button name="button" onClick={this.setLocation}>Button</button>
+      <Map />
     </div>
     )
   },
@@ -42,9 +43,15 @@ var Main = React.createClass({
       this.setState({longitude:long})
       this.setState({latitude:lat})
   },
+  componentDidMount: function(){
+    console.log(this.state.data)
+  },
   componentDidUpdate: function(){
-    if (this.state.longitude && this.state.latitude) {
-      this.sendData();
-    }
+      if(this.state.data===null) {
+       if (this.state.longitude && this.state.latitude) {
+            this.sendData();
+       }
+     }
+    console.log(this.state.data)
   }
 });
