@@ -7,9 +7,6 @@ Attention ice cream lovers, now you can have this sweet treat anytime, anywhere.
 ###Map View:
 <img src="/app/assets/images/map_view.png" width="400" height="250">
 
-##Inspiration
-We are ice cream lovers and wanted to make sure you can have this sweet treat anytime, anywhere...
-
 ##What it does
 Geolocates your location and shows you all of the ice cream spots within a half mile radius
 
