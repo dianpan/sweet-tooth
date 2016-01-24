@@ -107,29 +107,53 @@ var Main = React.createClass({
       var iceCreamMarkers = [];
 
       for (var i = 0; i < dataArray.length; i++) {
-        var coords= {lat: dataArray[i]['latitude'], lng: dataArray[i]['longitude']}
+        var coords= {lat: dataArray[i]['latitude'], lng: dataArray[i]['longitude']};
+        var contentString = '<div id="content">'+
+        '<div id="siteNotice">'+
+        '</div>'+
+        '<h1 id="firstHeading" class="firstHeading">' + dataArray[i]['name'] + '</h1>'+
+        '<div id="bodyContent">'+
+        '<img src=' + dataArray[i]['rating'] + '/>'+
+        '<p><b> ' + dataArray[i]['phone'] + '</b></p>'+
+        '<p> ' + dataArray[i]['address'] + '</p>'+
+        '</div>'+
+        '</div>';
         iceCreamMarkers[i] = createMarker({
           position:new google.maps.LatLng(coords),
           map: map,
           title: 'ice cream',
           icon: "http://31.media.tumblr.com/tumblr_ls9k18YAcI1qg66hv.gif",
           optimized: false
-        },);
+        }, contentString);
         iceCreamMarkers[i].addListener('click', toggleBounce);
-        iceCreamMarkers[i].addListener('mouseover', openInfoWindow);
-        iceCreamMarkers[i].addListener('mouseout', closeInfoWindow);
+        // iceCreamMarkers[i].addListener('mouseover', openInfoWindow);
+        // iceCreamMarkers[i].addListener('mouseout', closeInfoWindow);
       };
     }
 
     function createMarker(options, html) {
       var marker = new google.maps.Marker(options);
       if (html) {
-        google.maps.event.addListener(marker, "click", function() {
+        var infoWindow = new google.maps.InfoWindow({
+          content: html
+        });
+        google.maps.event.addListener(marker, "mouseover", function() {
           infoWindow.setContent(html);
           infoWindow.open(options.map, this);
         });
+        google.maps.event.addListener(marker, "mouseout", function() {
+          infoWindow.close(options.map, this);
+        });
       }
       return marker;
+    }
+
+    function openInfoWindow() {
+      infoWindow.open(map, this);
+    }
+
+    function closeInfoWindow() {
+      infoWindow.close(map, this);
     }
 
     function toggleBounce() {
@@ -140,38 +164,10 @@ var Main = React.createClass({
       }
     }
 
-    var contentString = '<div id="content">'+
-    '<div id="siteNotice">'+
-    '</div>'+
-    '<h1 id="firstHeading" class="firstHeading">Bi-Rite Creamery</h1>'+
-    '<div id="bodyContent">'+
-    '<p><b>Bi-Rite Creamery</b>, also referred to as <b>Ayers Rock</b>, is a large ' +
-    'sandstone rock formation in the southern part of the '+
-    'Northern Territory, central Australia. It lies 335&#160;km (208&#160;mi) '+
-    'south west of the nearest large town, Alice Springs; 450&#160;km '+
-    '(280&#160;mi) by road. Kata Tjuta and Uluru are the two major '+
-    'features of the Uluru - Kata Tjuta National Park. Uluru is '+
-    'sacred to the Pitjantjatjara and Yankunytjatjara, the '+
-    'Aboriginal people of the area. It has many springs, waterholes, '+
-    'rock caves and ancient paintings. Uluru is listed as a World '+
-    'Heritage Site.</p>'+
-    '<p>Attribution: Uluru, <a href="https://en.wikipedia.org/w/index.php?title=Uluru&oldid=297882194">'+
-    'https://en.wikipedia.org/w/index.php?title=Uluru</a> '+
-    '(last visited June 22, 2009).</p>'+
-    '</div>'+
-    '</div>';
 
-    var infoWindow = new google.maps.InfoWindow({
-      content: contentString
-    });
 
-    function openInfoWindow() {
-      infoWindow.open(map, this);
-    }
 
-    function closeInfoWindow() {
-      infoWindow.close(map, this);
-    }
+
 
 
     initMap(this.state.longitude,this.state.latitude, this.state.data)
