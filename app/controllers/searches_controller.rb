@@ -1,6 +1,7 @@
 class SearchesController < ApplicationController
 
   def index
+    @search = Search.find_by({id:params[:id]})
   end
 
   def create
@@ -15,6 +16,9 @@ class SearchesController < ApplicationController
            biz_info = {}
            biz_info['name']=business.name
            biz_info['phone']=business.phone
+           biz_info['address']=business.location.address.first
+           biz_info['longitude']=business.location.coordinate.longitude
+           biz_info['latitude']=business.location.coordinate.latitude
            shops << biz_info
      end
 
@@ -24,7 +28,5 @@ class SearchesController < ApplicationController
      end
   end
 
-  def show
-  end
 
 end
