@@ -1,8 +1,11 @@
 # sweet-tooth
 Attention ice cream lovers, now you can have this sweet treat anytime, anywhere...
 
-![Homepage](/relative/path/to/homepage.png?raw=true "Optional Title")
-![Map View](/relative/path/to/map_view.png?raw=true "Optional Title")
+###Homepage:
+<img src="/app/assets/images/homepage.png" width="214" height="350">
+
+###Map View:
+<img src="/app/assets/images/map_view.png" width="400" height="250">
 
 ##Inspiration
 We are ice cream lovers and wanted to make sure you can have this sweet treat anytime, anywhere...
