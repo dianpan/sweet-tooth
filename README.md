@@ -11,10 +11,8 @@ Attention ice cream lovers, now you can have this sweet treat anytime, anywhere.
 Geolocates your location and shows you all of the ice cream spots within a half mile radius
 
 ##Built using
-Front end: React
-
-Backed: Rails
-
-CSS Framework: Foundation
+- React 
+- Rails
+- Foundation
 
 
